@@ -5,7 +5,39 @@ import java.io.*;
 public class Machine_Learning_hw1 {
 
     public static void main(String[] args) {
-	// write your code here
+
+        String csvFile = "/Users/dverb/desktop/iris.csv";
+        BufferedReader br = null;
+        String line = "";
+        String cvsSplitBy = ",";
+
+        try {
+
+            br = new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null) {
+
+                // use comma as separator
+                String[] feature = line.split(cvsSplitBy);
+
+                System.out.println("number [code= " + feature[0] + " , name=" + country[2] + "]");
+
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
     }
 }
 

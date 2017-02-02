@@ -20,7 +20,7 @@ public class Main {
                 // use comma as separator
                 String[] feature = line.split(cvsSplitBy);
 
-                System.out.println("number [code= " + feature[0] + " , name=" + feature[2] + "]");
+                System.out.println("number [code= " + feature[0] + " , name=" + feature[4] + "]");
 
             }
 

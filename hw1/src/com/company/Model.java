@@ -14,6 +14,10 @@ public class Model {
 
     public void changeValues(double[] examples){
         //function to change weight values
+        for(int i=0; i<weights.length; i++){
+            // missing a y, update only if y != y'
+            weights[i] = (weights[i] + learning_rate * examples[i]);
+        }
     }
 
     public int runSolve(double[] tests){

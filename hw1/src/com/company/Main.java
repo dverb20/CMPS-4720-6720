@@ -34,51 +34,12 @@ public class Main {
             System.out.println(count);
         }
         scanner.close();
-        System.out.println(data.length);
 
+        Model perceptron = new Model(4, 0.2);
+        for(int i=0; i < 20; i++){
 
-//        CSVReader reader = new CSVReader(new FileReader(csvFile));
-//        String [] nextLine;
-//        while ((nextLine = reader.readNext()) != null) {
-//            // nextLine[] is an array of values from the line
-//            //System.out.println(nextLine[0] + nextLine[1] + "etc...");
-//            System.out.println("first attribute: " + nextLine[0] + " , name=" + nextLine[4] + "]");
-//            for(int i=0; i<4; i++){
-//                data[count][i] = Double.parseDouble(nextLine[i]);
-//            }
-//            count++;
-//            System.out.println(count);
-//        }
-
-
-//        try {
-//
-//            br = new BufferedReader(new FileReader(csvFile));
-//            while ((line = br.readLine()) != null) {
-//
-//                // use comma as separator
-//                String[] feature = line.split(cvsSplitBy);
-//                System.out.println("first attribute: " + feature[0] + " , name=" + feature[4] + "]");
-//                for(int i=0; i<4; i++){
-//                    data[count][i] = Double.parseDouble(feature[i]);
-//                }
-//                count++;
-//                System.out.println(count);
-//            }
-//
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (br != null) {
-//                try {
-//                    br.close();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
+        }
+        //System.out.println(data.length);
 
     }
 }

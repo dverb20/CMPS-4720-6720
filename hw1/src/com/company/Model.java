@@ -16,6 +16,7 @@ public class Model {
         //function to change weight values
         for(int i=0; i<weights.length; i++){
             // missing a y, update only if y != y'
+            //get y by finding the sign of the dot(w .. x)
             weights[i] = (weights[i] + learning_rate * examples[i]);
         }
     }

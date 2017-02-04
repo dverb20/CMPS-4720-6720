@@ -35,9 +35,31 @@ public class Main {
         }
         scanner.close();
 
-        Model perceptron = new Model(4, 0.2);
+        Model setosa = new Model(4, 0.2);
+        Model versicolor = new Model(4, 0.2);
+        Model virginica = new Model(4, 0.2);
         for(int i=0; i < 20; i++){
-
+            //while training, find y by running model on example, use that to update
+            // 0-40, 50-90, 100-140 for training
+            int j = 0;
+            while(j < 150){
+                if(j < 41){ // setosa
+                    int answer = setosa.runSolve(data[j]);
+                    //if statement using answer
+                    setosa.changeValues(data[j]);
+                }
+                else if(j > 49 && j<91) { // versicolor
+                    int answer = versicolor.runSolve(data[j]);
+                    //if statement using answer
+                    versicolor.changeValues(data[j]);
+                }
+                else if(j > 99){ // virginica
+                    int answer = virginica.runSolve(data[j]);
+                    //if statement using answer
+                    virginica.changeValues(data[j]);
+                }
+                j++;
+            }
         }
         //System.out.println(data.length);
 

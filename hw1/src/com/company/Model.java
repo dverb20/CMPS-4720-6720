@@ -8,7 +8,7 @@ public class Model {
 
     //initialize variables
     public Model(int num_weights, double rate){
-        weights = [num_weights]
+        weights = new double[num_weights];
         learning_rate = rate;
     }
 

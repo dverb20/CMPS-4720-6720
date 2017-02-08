@@ -35,69 +35,65 @@ public class Main {
         }
         scanner.close();
 
-        Model setosa = new Model(4, 0.1);
-        Model versicolor = new Model(4, 0.1);
-        Model virginica = new Model(4, 0.1);
+        Model setosa = new Model(4, 0.02);
+        Model versicolor = new Model(4, 0.02);
+        Model virginica = new Model(4, 0.02);
 
         //Training
-        int answer;
-        double sum;
-        for(int i=0; i < 20; i++){
-            //while training, find y by running model on example, use that to update
-            // 0-40, 50-90, 100-140 for training
-            int j = 0;
+        int answer1;
+        int answer2;
+        int answer3;
+        //while training, find y by running model on example, use that to update
+        // 0-40, 50-90, 100-140 for training
+        int j = 0;
+        for(int i=0; i<3; i++){
             while(j < 150){
                 if(j < 40){ // setosa
-                    answer = setosa.runSolve(data[j]);
-                    sum = sumArr(data[j]);
-                    if(answer < sum){
-                        setosa.changeValues(data[j], 1);
-                    }
-                    else{
-                        setosa.changeValues(data[j], -1);
-                    }
+                    answer1 = setosa.runSolve(data[j]);
+                    setosa.changeValues(data[j], answer1, 1);
+                    answer2 = versicolor.runSolve(data[j]);
+                    versicolor.changeValues(data[j], answer2, 0);
+                    answer3 = virginica.runSolve(data[j]);
+                    virginica.changeValues(data[j], answer3, 0);
                 }
                 else if(j > 49 && j<90) { // versicolor
-                    answer = versicolor.runSolve(data[j]);
-                    sum = sumArr(data[j]);
-                    if(answer < sum){
-                        versicolor.changeValues(data[j], 1);
-                    }
-                    else{
-                        versicolor.changeValues(data[j], -1);
-                    }
+                    answer1 = setosa.runSolve(data[j]);
+                    setosa.changeValues(data[j], answer1, 0);
+                    answer2 = versicolor.runSolve(data[j]);
+                    versicolor.changeValues(data[j], answer2, 1);
+                    answer3 = virginica.runSolve(data[j]);
+                    virginica.changeValues(data[j], answer3, 0);
                 }
                 else if(j > 99){ // virginica
-                    answer = virginica.runSolve(data[j]);
-                    sum = sumArr(data[j]);
-                    if(answer < sum){
-                        virginica.changeValues(data[j], 1);
-                    }
-                    else{
-                        virginica.changeValues(data[j], -1);
-                    }
+                    answer1 = setosa.runSolve(data[j]);
+                    setosa.changeValues(data[j], answer1, 0);
+                    answer2 = versicolor.runSolve(data[j]);
+                    versicolor.changeValues(data[j], answer2, 0);
+                    answer3 = virginica.runSolve(data[j]);
+                    virginica.changeValues(data[j], answer3, 1);
                 }
                 j++;
             }
         }
+
         System.out.println(setosa.toString());
         System.out.println(versicolor.toString());
         System.out.println(virginica.toString());
 
         //Testing
-        int j = 0;
+        j = 0;
         while(j < 150){
             if(j > 39 && j<50){ // setosa
-                answer = setosa.runSolve(data[j]);
-                System.out.println(answer);
+                answer1 = setosa.runSolve(data[j]);
+                System.out.println(answer1);
             }
             else if(j > 89 && j<100) { // versicolor
-                answer = versicolor.runSolve(data[j]);
-                System.out.println(answer);
+                answer2 = versicolor.runSolve(data[j]);
+                System.out.println(answer2);
             }
             else if(j>139 && j < 150){ // virginica
-                answer = virginica.runSolve(data[j]);
-                System.out.println(answer);
+                answer3 = virginica.runSolve(data[j]);
+                System.out.println(answer3);
             }
             j++;
         }

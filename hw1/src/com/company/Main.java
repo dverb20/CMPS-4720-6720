@@ -12,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        String csvFile = "/Users/dannyverb/Desktop/iris.csv";
+        String csvFile = "../hw1/iris.csv";
         //BufferedReader br = null;
         //String line = "";
         //String cvsSplitBy = ",";

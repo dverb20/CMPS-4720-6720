@@ -24,16 +24,6 @@ import org.nd4j.linalg.dataset.api.iterator.DataSetIterator;
 
 import java.io.File;
 
-/**
- * "Linear" Data Classification Example
- *
- * Based on the data from Jason Baldridge:
- * https://github.com/jasonbaldridge/try-tf/tree/master/simdata
- *
- * @author Josh Patterson
- * @author Alex Black (added plots)
- *
- */
 public class IrisClassifier {
 
 

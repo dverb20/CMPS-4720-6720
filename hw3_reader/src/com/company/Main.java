@@ -38,9 +38,9 @@ public class Main {
         while(scanner.hasNext()){
             String nextLine = scanner.nextLine();
             String[] arr=nextLine.split(",");
-            if(dataGate(arr) == true){
-                //boolean success = successGate(Double.parseDouble(arr[budgetIndex]), Double.parseDouble(arr[grossIndex]));
-                boolean success = true;
+            if(dataGate(arr, budgetIndex, grossIndex) == true){
+                boolean success = successGate(Double.parseDouble(arr[budgetIndex]), Double.parseDouble(arr[grossIndex]));
+                //boolean success = true;
 
                 //Directors
                 directors.addFactor(arr[headerIndex[0]], success, 1.0);
@@ -80,13 +80,13 @@ public class Main {
         System.out.println(data.get(95)[1]);
         System.out.println(data.get(3)[1]);
         System.out.println(data.get(3)[2]);
-        //System.out.println(rating.toString());
+        System.out.println(rating.toString());
         //System.out.println(count);
     }
 
     public static boolean successGate(double budget, double gross){
         double margin = gross/budget;
-        if(margin > 1.75){
+        if(margin > 0.8){
             return true;
         }
         else{
@@ -94,7 +94,7 @@ public class Main {
         }
     }
 
-    public static boolean dataGate(String[] line){
+    public static boolean dataGate(String[] line, int budget, int gross){
 
 
 //        for(int i=0; i<28; i++){
@@ -114,6 +114,18 @@ public class Main {
                 return false;
             }
         }
+        if(isDouble(line[budget]) == false || isDouble(line[gross]) == false){
+            return false;
+        }
         return true;
+    }
+
+    public static boolean isDouble(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

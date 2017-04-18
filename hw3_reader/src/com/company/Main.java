@@ -6,6 +6,7 @@ import java.io.File;
 //import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.io.InterruptedIOException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Main {
@@ -27,6 +28,7 @@ public class Main {
         int[] actor_index = {6,10,14};
         int budgetIndex = 22;
         int grossIndex = 8;
+        //ArrayList<Double> margins = new ArrayList<Double>();
         //actor indecies are 6, 10, 14
 
         Lexicon directors = new Lexicon("Directors");
@@ -45,6 +47,7 @@ public class Main {
                     double budget = Double.parseDouble(arr[budgetIndex]);
                     double gross = Double.parseDouble(arr[grossIndex]);
                     double margin = successGate(budget, gross);
+                    //margins.add(margin);
 
                     //boolean success = true;
 
@@ -100,7 +103,10 @@ public class Main {
 
         }
         scanner.close();
-        String n = "Tim Burton";
+//        Collections.sort(margins);
+//        int size = margins.size();
+//        System.out.println(margins.get((size/2)));
+        String n = "Peter Jackson";
         for(int i=0; i<1; i++){
             for(String[] line : trainingData){
                 String name = line[1];

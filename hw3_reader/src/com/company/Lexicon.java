@@ -9,6 +9,7 @@ public class Lexicon {
     private ArrayList<String> names;
     private ArrayList<Double> weights;
     private ArrayList<Integer> appearances;
+    private ArrayList<Integer> updates;
     private double learningRate;
 
     public Lexicon(String h){
@@ -16,6 +17,7 @@ public class Lexicon {
         names = new ArrayList<String>();
         weights = new ArrayList<Double>();
         appearances = new ArrayList<Integer>();
+        updates = new ArrayList<Integer>();
         learningRate = 0.08;
     }
 
@@ -49,16 +51,24 @@ public class Lexicon {
         appearances.set(index, (appearances.get(index)+1));
     }
 
+    public int getUpdates(String name){
+        int index = names.indexOf(name);
+        return updates.get(index);
+    }
+
     public void addFactor(String name, double margin){
         names.add(name);
         appearances.add(1);
-        weights.add(learningRate);
-
+        weights.add(0.0);
+        updates.add(0);
     }
 
     public void update(String name, double margin, double budget){
         double weight = this.getWeight(name);
         int index = names.indexOf(name);
+        updates.set(index, (updates.get(index)+1));
+        int apps = this.getUpdates(name);
+        double den = Math.log(20);
         double sign = 0;
         //if(budget > 1000000000){
             //sign = expected - margin + .3;
@@ -66,10 +76,14 @@ public class Lexicon {
         //else {
         sign = margin - weight;
         double dif = Math.abs(sign);
+        double update;
         //}
-        if(sign > 0) {sign = 1.0;}
-        if(sign < 0){ sign = -1.0; }
-        double update = weight + (learningRate*sign*dif);
+//        if(sign > 0) {sign = 1.0;}
+//        if(sign < 0){ sign = -1.0; }
+        double added = (Math.log(margin*10)/den);
+        //System.out.println(weight + " : " + margin + " : " + (Math.log(margin*10)/den));
+        update = ((weight*(apps-1))+added)/(apps);
+        //double update = weight + (learningRate*sign*dif);
         weights.set(index, update);
     }
 
